@@ -47,8 +47,12 @@ function createOrder(options) {
         console.log("Failed to create order", err);
         return reject(err);
       } else{
-        console.log("OrderID: ", order.id);
-        return resolve(order.id);
+        console.log("OrderID: ", order);
+        return resolve({
+         id: order.id,
+        amount: order.amount,
+        currency: order.currency
+        });
       }
     });
   });

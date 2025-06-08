@@ -252,11 +252,11 @@ async function initiatePayment(orderAmount, userData) {
 
   const options = {
     key: "rzp_test_ODWUFUWozm48C8",
-    amount: orderData.data.amount,
-    currency: orderData.data.currency,
+    amount: orderData.amount,
+    currency: orderData.currency,
     name: "FloraCo",
     description: "Test Payment",
-    order_id: orderData.data.id,
+    order_id: orderData.id,
     handler: function (response) {
       const verify = httpsCallable(functions, 'verifyPayment');
       const result = verify({
@@ -265,7 +265,7 @@ async function initiatePayment(orderAmount, userData) {
         signature: response.razorpay_signature
       });
 
-      if (result.data.success) {
+      if (result.success) {
         uploadOrder();
 		console.log('Payment Successful');
         alert("Payment successful!");
