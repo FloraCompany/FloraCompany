@@ -102,7 +102,7 @@ function checkout(){
 			if (modeOfPayment === "2") {
 				uploadOrder();
 			}else{
-				initiatePayment(getFinalAmount());
+				initiatePayment(getFinalAmount(), address);
 			}
 
 		}
