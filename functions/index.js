@@ -2,61 +2,53 @@ const functions = require("firebase-functions");
 const Razorpay = require("razorpay");
 const crypto = require("crypto");
 
+// Initialize Razorpay instance
 const instance = new Razorpay({
-      key_id: "rzp_test_ODWUFUWozm48C8",
-      key_secret: "pPqWmH7slMHAkgeU40CfL0Gw"
+  key_id: "rzp_test_ODWUFUWozm48C8",
+  key_secret: "pPqWmH7slMHAkgeU40CfL0Gw"
 });
 
-exports.generateOrder = functions.https.onCall((data, context) => {
+// Create Razorpay order
+exports.createOrder = functions.https.onCall(async (data, context) => {
   const options = {
-    amount: data.amount*100,
+    amount: data.amount * 100, // Convert to paise
     currency: "INR",
-    reciept: "FloraCoReceipt"+Date.now()
+    receipt: "FloraCoReceipt_" + Date.now()
   };
 
-  return createOrder(options).then((orderId) => {
-    return orderId;
-  }).catch((e) => {
-    return { error: e };
-  });
-});
-
-exports.verifyPayment = functions.https.onCall( (data, context) => {
-
-  const { order_id, payment_id, signature } = data;
-
-  console.log("Generated Signature :", generatedSignature, "\nSignature", signature);
-  console.log("Order ID:", order_id);
-  console.log("Payment ID:", payment_id);
-  console.log("Signature (from Razorpay):", signature);
-
-  const hmac = crypto.createHmac("sha256", "pPqWmH7slMHAkgeU40CfL0Gw");
-  hmac.update(order_id+"|"+payment_id);
-  const generatedSignature = hmac.digest("hex");
-  console.log("Generated Signature :", generatedSignature, "\nSignature", signature);
-
-  if (generatedSignature === signature) {
-    return { success: true};
-  }else {
-    throw new functions.https.HttpsError("permission-denied", "Invalid Signature");
+  try {
+    const order = await instance.orders.create(options);
+    console.log("✅ Order created:", order);
+    return {
+      id: order.id,
+      amount: order.amount,
+      currency: order.currency
+    };
+  } catch (error) {
+    console.error("❌ Failed to create order:", error);
+    throw new functions.https.HttpsError("internal", "Order creation failed");
   }
 });
 
-function createOrder(options) {
-  return new Promise((resolve, reject) => {
-     instance.orders.create(options, (err, order) => {
-      if (err !== null) {
-        console.log("Failed to create order", err);
-        return reject(err);
-      } else{
-        console.log("OrderID: ", order);
-        return resolve({
-         id: order.id,
-        amount: order.amount,
-        currency: order.currency
-        });
-      }
-    });
-  });
-}
+// Verify payment signature
+exports.verifyPayment = functions.https.onCall((data, context) => {
+  const { order_id, payment_id, signature } = data;
 
+  if (!order_id || !payment_id || !signature) {
+    console.error("❌ Missing parameters for verification");
+    throw new functions.https.HttpsError("invalid-argument", "Missing payment data");
+  }
+
+  const hmac = crypto.createHmac("sha256", "pPqWmH7slMHAkgeU40CfL0Gw");
+  hmac.update(order_id + "|" + payment_id);
+  const generatedSignature = hmac.digest("hex");
+
+  console.log("🔐 Generated:", generatedSignature);
+  console.log("📩 Provided:", signature);
+
+  if (generatedSignature === signature) {
+    return { success: true };
+  } else {
+    throw new functions.https.HttpsError("permission-denied", "Invalid Signature");
+  }
+});

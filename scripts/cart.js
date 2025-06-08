@@ -244,51 +244,73 @@ async function updateList(callBack){
 }
 
 async function initiatePayment(orderAmount, userData) {
+try {
+    const functions = getFunctions(app);
+    const createOrder = httpsCallable(functions, 'createOrder');
 
-	let functions = getFunctions(app);
+    // Step 1: Request order from backend
+    const orderData = await createOrder({ amount: orderAmount });
+    console.log("🧾 Order created: ", orderData.data, " \nPrice ", orderAmount);
 
-	const createOrder = httpsCallable(functions, 'generateOrder');
-	const orderData = await createOrder({amount: orderAmount});
+    const options = {
+      key: "rzp_test_ODWUFUWozm48C8",
+      amount: orderData.data.amount,
+      currency: orderData.data.currency,
+      name: "FloraCo",
+      description: "Test Payment",
+      order_id: orderData.data.id,
 
-  const options = {
-    key: "rzp_test_ODWUFUWozm48C8",
-    amount: orderData.amount,
-    currency: orderData.currency,
-    name: "FloraCo",
-    description: "Test Payment",
-    order_id: orderData.id,
-    handler: function (response) {
-      const verify = httpsCallable(functions, 'verifyPayment');
-      const result = verify({
-        order_id: response.razorpay_order_id,
-        payment_id: response.razorpay_payment_id,
-        signature: response.razorpay_signature
-      });
-	  
-		console.log(result);
-		
-  		console.log(`Razorpay :${response.razorpay_order_id} ${response.razorpay_payment_id} ${response.razorpay_signature}`);
+      handler: async function (response) {
+        console.log("✅ Payment Response:", response);
 
-      if (result.success) {
-        uploadOrder();
-		console.log('Payment Successful');
-        alert("Payment successful!");
-      } else {
-		console.log('Payment Failed');
-        alert("Payment verification failed");
+        try {
+          const verify = httpsCallable(functions, 'verifyPayment');
+          const result = await verify({
+            order_id: response.razorpay_order_id,
+            payment_id: response.razorpay_payment_id,
+            signature: response.razorpay_signature
+          });
+
+          console.log("🔒 Verification result:", result.data);
+
+          if (result.data.success) {
+            uploadOrder(); // Your function to store order in Firestore
+            alert("✅ Payment successful!");
+          } else {
+            alert("❌ Payment verification failed");
+          }
+        } catch (verifyError) {
+          console.error("❌ Verification Error:", verifyError);
+          alert("Error verifying payment");
+        }
+      },
+
+      prefill: {
+        name: String(userData.name),
+        email: "floracompanydot@gmail.com",
+        contact: String(userData.phone)
+      },
+
+      theme: {
+        color: "#3399cc"
       }
-    },
-    prefill: {
-      name: String(userData.name),
-      email: "floracompanydot@gmail.com",
-      contact: String(userData.phone)
-    },
-    theme: {
-      color: "#3399cc"
-    }
-  };
-  const rzp = new Razorpay(options);
-  rzp.open();
+    };
+
+    const rzp = new Razorpay(options);
+
+    // Step 2: Handle payment failure
+    rzp.on('payment.failed', function (response) {
+      console.error("❌ Payment Failed:", response.error);
+      alert("Payment failed: " + response.error.description);
+    });
+
+    // Step 3: Open payment popup
+    rzp.open();
+
+  } catch (err) {
+    console.error("🔥 Error initiating payment:", err);
+    alert("Something went wrong while creating the payment order.");
+  }
 }
 
 
