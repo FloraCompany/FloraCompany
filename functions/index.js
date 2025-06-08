@@ -7,7 +7,7 @@ const instance = new Razorpay({
       key_secret: "pPqWmH7slMHAkgeU40CfL0Gw"
 });
 
-exports.generateOrder = functions.https.onCall({cors: true}, (data, context) => {
+exports.generateOrder = functions.https.onCall((data, context) => {
   const options = {
     amount: data.amount*100,
     currency: "INR",
@@ -21,7 +21,7 @@ exports.generateOrder = functions.https.onCall({cors: true}, (data, context) => 
   });
 });
 
-exports.verifyPayment = functions.https.onCall( {cors: true}, async (data, context) => {
+exports.verifyPayment = functions.https.onCall( (data, context) => {
 
   const { order_id, payment_id, signature } = data;
   const hmac = crypto.createHmac("sha256", "pPqWmH7slMHAkgeU40CfL0Gw");
