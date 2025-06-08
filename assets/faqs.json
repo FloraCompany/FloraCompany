@@ -1,0 +1,60 @@
+[
+
+	{
+		"question": "What kind of plants do you sell?",
+		"answer": "We offer a wide variety including indoor plants, outdoor plants, succulents, flowering plants, herbs, bonsai, air-purifying plants, and more. You can browse by category or use our filters to find what you need."
+	},
+	{
+		"question": "Are your plants real or artificial?",
+		"answer": "All our plants are real and living unless otherwise specified in the product description."
+	},
+	{
+		"question": "Do the plants come in pots?",
+		"answer": "Most of our plants come with nursery pots by default. Decorative pots are available separately or as an upgrade option on select listings."
+	},
+	{
+		"question": "Are your plants safe for pets?",
+		"answer": "Some of our plants are pet-safe, and others may be toxic. We always recommend checking the product description or filtering for pet-safe options if you have pets at home."
+	},
+	{
+		"question": "How long does delivery take?",
+		"answer": "Delivery typically takes 2–5 business days depending on your location. Express shipping options are available at checkout."
+	},
+	{
+		"question": "Do you deliver nationwide?",
+		"answer": "Yes, we deliver to most areas nationwide. Some remote locations may have limited service."
+	},
+	{
+		"question": "Can I schedule a delivery date?",
+		"answer": "Yes, during checkout you can select a preferred delivery date on eligible items."
+	},
+	{
+		"question": "What should I do if my plant arrives damaged?",
+		"answer": "Please contact our support team within 48 hours of delivery with a photo of the damage. We’ll be happy to send a replacement or issue a refund."
+	},
+	{
+		"question": "Do you provide care instructions?",
+		"answer": "Yes! Every plant comes with easy-to-follow care instructions, and you can also find detailed care guides on our website."
+	},
+	{
+		"question": "Can I return a plant if I change my mind?",
+		"answer": "Due to the perishable nature of plants, we typically do not accept returns. However, if there’s an issue with your order, please contact us for a solution."
+	},
+	{
+		"question": "Do I need an account to place an order?",
+		"answer": "Yes ,creating an account helps you track orders and manage your orders more easily."
+	},
+	{
+		"question": "Is my payment information secure?",
+		"answer": "Absolutely. We use SSL encryption and trusted payment providers to keep your information safe."
+	},
+	{
+		"question": "Can I send a plant as a gift?",
+		"answer": "Yes! You can add a gift message but you have to mail about gift message and we will securely respond for it as soon as possible."
+	},
+	{
+		"question": "Do you offer bulk orders for events or businesses?",
+		"answer": " Yes, we do! We provide bulk plant orders for corporate gifting, weddings, events, interior landscaping, and more. You can contact our team for personalized recommendations, quantity discounts, and delivery scheduling. Just email us at floracompanydot@gmail.com."
+	}
+
+]

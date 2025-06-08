@@ -1,0 +1,208 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>FloraCo • Cart</title>
+  <link rel="icon" type="image/x-icon" href="./media/fc.png">
+  <link rel="stylesheet" href="styles/cart.css"/>
+  <link rel='stylesheet' href='https://cdn-uicons.flaticon.com/2.6.0/uicons-solid-chubby/css/uicons-solid-chubby.css'>  
+  <link rel='stylesheet' href='https://cdn-uicons.flaticon.com/2.6.0/uicons-bold-rounded/css/uicons-bold-rounded.css'>
+  <link rel='stylesheet' href='https://cdn-uicons.flaticon.com/2.6.0/uicons-brands/css/uicons-brands.css'>
+  <link rel='stylesheet' href='https://cdn-uicons.flaticon.com/2.6.0/uicons-solid-straight/css/uicons-solid-straight.css'>
+  <link href="https://fonts.googleapis.com/css2?family=Bowlby+One&display=swap" rel="stylesheet">
+</head>
+<body>
+
+  <nav>
+    <img id="logo" src="./media/floraco.png"/>
+    <ul class="nav_list">
+      <li class="nav_li"><a href="index.html">Home</a></li>
+      <li class="nav_li"><a href="products.html?category=plant">Products</a></li>
+      <li class="nav_li"><a href="about.html">About</a></li>
+      <li class="nav_li"><a href="#footer">Contact</a></li>
+    </ul>
+    <div class="nav_right">
+      <a href="cart.html" id="cart" class="selectIcon"><i  class="fi fi-ss-shopping-cart"></i></a>
+      <a href="account.html" id="user"><i id="user" class="fi fi-ss-circle-user"></i></a>
+      <i id="menu" class="fi fi-br-menu-burger"></i>
+    </div>
+  </nav>
+
+  <aside id="asideMenu">
+    <i id="close" class="fi fi-ss-cross-small"></i>
+    <ul class="aside_list">
+      <li class="nav_li"><a href="index.html">Home</a></li>
+      <li class="nav_li"><a href="products.html?category=plant">Products</a></li>
+      <li class="nav_li"><a href="about.html">About</a></li>
+      <li class="nav_li"><a href="#footer">Contact</a></li>
+      <li class="nav_li"><a href="cart.html" id="cartSide">Cart</a></li>
+      <li class="nav_li"><a href="account.html">Profile</a></li>
+    </ul>
+  </aside>
+
+  <div class="container" id="container">
+    <div id="left" class="left">
+      <h2 class="heading">Shopping Cart</h2>
+      <table>
+        <thead>
+          <tr>
+            <th>Product</th>
+            <th>Name</th>
+            <th>Quantity</th>
+            <th>Total</th>
+          </tr>
+        </thead>
+        <tbody id="tableBody">
+        </tbody>
+      </table>
+    </div>
+
+    <div class="right">
+      <div class="box">
+
+        <div class="summary-box">
+
+          <div class="headingSumm">
+            <h2>Order Summary</h2>
+            <i id="drop" class="fi fi-br-caret-down"></i>
+          </div>
+
+          <div class="summary">
+
+            <div class="summary-row">
+              <span>No. of items:</span>
+              <span id="item-count"></span>
+            </div>
+            <div class="summary-row">
+              <span>Cost:</span>
+              <span id="item-cost"></span>
+            </div>
+            <div class="summary-row" style="display: none;">
+              <span>Discount:</span>
+              <span id="discount"></span>
+            </div>
+            <div class="summary-row">
+              <span>Coupon:</span>
+              <span id="coupon-status" class="coupon-status">Not Applied</span>
+            </div>
+            <div class="summary-row total-price">
+              <span>Total Price:</span>
+              <span id="final-price"></span>
+            </div>
+
+          </div>
+
+          <div class="coupon-input">
+            <input type="text" id="coupon-input" placeholder="Enter coupon" />
+            <button class="apply-btn" id="apply">Apply</button>
+          </div>
+
+
+          <div class="address">
+            <h3>Shipping Address</h3>
+            <input type="text" id="name" placeholder="Name*" />
+            <input type="number" id="phone" placeholder="Phone No*" maxlength="10" minlength="10" />
+            <input type="text" id="street" placeholder="Street, D.No*" />
+            <input type="text" id="locality" placeholder="Locality, P.O*" />
+            <input type="text" id="pin" placeholder="Pincode*"/>
+            <textarea placeholder="Full Address" id="fullAdd"></textarea>
+            <input type="text" id="country" value="India" disabled="true" />
+          </div>
+
+          <div class="payments">
+            <h3>Payment Method</h3>
+            <div class="payment-options">
+              <label>
+                <input type="radio" name="payment" value="0" />
+                <img src="./media/card.png" alt="Card" class="payment-icon" />
+              </label>
+              <label>
+                <input type="radio" name="payment" value="1" />
+                <img src="./media/upi.png" alt="UPI" class="payment-icon" />
+              </label>
+              <label id="cod">
+                <input type="radio" name="payment" value="2" />
+                <img src="./media/cod.png" alt="COD" class="payment-icon" />
+              </label>
+            </div>
+          </div>
+        </div>
+
+        <button id="checkout" class="checkout-btn">Checkout</button>
+      </div>
+    </div>
+
+  </div>
+      
+  <div id="toast"></div>
+
+    <div class="error" id="error">
+      <img src="./media/no-product.png" alt="">
+      <h2>Cart is Empty Shop Now</h2>
+    </div>
+
+
+  <div class="built">
+    <h1>#Go Green</h1>
+    <div class="builtText">Made with <i>LOVE</i> from KAKINADA</div>
+  </div>
+  
+  <footer id="footer">
+
+    <div class="footerDetails">
+      <div class="footerLogo">
+        <img src="./media/floraco.png" alt="">
+      </div>
+
+      <div class="footerLinks">
+        <div class="social">
+          <p>Quick Links</p>
+          <a href="about.html">About</a>
+          <a href="orders.html">Orders</a>
+          <a href="help.html">Help</a>
+          <a href="faq.html">FAQs</a>
+        </div>
+        <div class="social">  
+          <p>Contact</p>
+          <a href="mailto:floracompanydot@gmail.com">Mail</a>
+          <a href="https:/wa.me/+916281335878">Whatsapp</a>
+          <a href="help.html?sub=Feedback">Feedback</a>
+          <a href="help.html?sub=Report">Report</a>
+        </div>
+        <div class="social">  
+          <p>Our Social Media</p>
+          <a href="https://www.instagram.com/thefloracodot/">Instagram</a>
+          <a href="">Facebook</a>
+          <a href="">X (Twitter)</a>
+        </div>
+      </div>
+    </div>
+
+    <div class="footerEnd">
+      <p>All Uicons by <a href="https://www.flaticon.com/uicons">Flaticon</a></p>
+      <div class="documents">
+        
+        <a href="" title=""></a>
+        <a href="privacy.html" title="">Privacy Policy</a>
+        <a href="privacy.html" title="">Terms of Use</a>
+
+      </div>
+    </div>
+
+  </footer>
+
+
+  <div id="loader" class="load">
+      <p>Congratulations</p>
+      <p>Order placed succesfully!!</p>
+      <h1 id="ordID"></h1>
+      <p>Your shipment will be delivered in 3-4 business days :)</p>
+      <span class="loader"></span>
+  </div>
+
+<script src="https://checkout.razorpay.com/v1/checkout.js"></script>
+<script src="scripts/cart.js" type="module" charset="utf-8" async defer></script>
+
+</body>
+</html>

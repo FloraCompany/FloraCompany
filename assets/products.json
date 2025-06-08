@@ -1,0 +1,454 @@
+{
+  "products": {
+    "all": {
+      "floral-supply": {
+        "decorations": {
+          "FCPS00002": {
+            "description": "sgdfgsdfgs",
+            "id": "FCPS00002",
+            "name": "ggdf",
+            "parentCategory": "floral-supply",
+            "subCategory": "decorations",
+            "tags": [
+              "dfghfg",
+              "fgfgh"
+            ],
+            "variations": [
+              {
+                "id": "fhgfghd",
+                "image": "ghdfghdfgh",
+                "name": "fghdfgh",
+                "price": "1521515",
+                "stock": true
+              },
+              {
+                "id": "dfghdfgh",
+                "image": "dhgdfghdf",
+                "name": "dfghdfg",
+                "price": "10000",
+                "stock": true
+              }
+            ]
+          }
+        }
+      },
+      "plant": {
+        "air": {
+          "FCPS00000": {
+            "description": "This image of Tillandsia ionantha 'Guatemala' is for illustration purposes only. The actual plant may vary in appearance depending on its age, size, and environmental conditions such as light, humidity, and temperature. Tillandsia ionantha 'Guatemala' is an easy-care air plant that thrives in bright, indirect sunlight. It requires misting 2–3 times a week or a weekly soak. Preferring moderate to high humidity, it needs no soil and is pet-friendly. This air-purifying plant grows best in warm temperatures and benefits from monthly feeding.",
+            "id": "FCPS00000",
+            "name": "Tillandsia ionantha Guatemala Plant",
+            "parentCategory": "plant",
+            "subCategory": "air",
+            "tags": [
+              "air",
+              "organic"
+            ],
+            "variations": [
+              {
+                "id": "PLT-MDM-GR",
+                "image": "https://nurserylive.com/cdn/shop/products/nurserylive-g-plants-air-plant-tillandsia-ionantha-guatemala-medium-plant_458x458.jpg",
+                "name": "M",
+                "stock": true,
+                "price": "399"
+              }
+            ]
+          }
+        },
+        "aquatic": {
+          "FCPS00001": {
+            "description": "This image of Nelumbo nucifera (Pink) is for illustration purposes only. The actual plant’s appearance may vary depending on its age, size, and environmental conditions such as water quality, sunlight, and season.\nRequires Full Sunlight<br>\nNeeds Constant Water (Submerged Roots)<br>\nModerate Care Level<br>\nAir-Purifying Plant<br>\nPet-Friendly<br>\nFertilize Every 2–4 Weeks (Growing Season)<br>\nGrows Best in Outdoor Ponds or Large Containers<br>\nSymbol of Purity and Peace<br>\n\n",
+            "id": "FCPS00001",
+            "name": "Lotus, Nelumbo Nucifera",
+            "parentCategory": "plant",
+            "subCategory": "aquatic",
+            "tags": [
+              "Aquatic",
+              "flowering",
+              "fertilizers",
+              "ceramics"
+            ],
+            "variations": [
+              {
+                "id": "PLT-FR-PNK",
+                "image": "https://m.media-amazon.com/images/I/61xtSilwdmL._AC_UF1000,1000_QL80_DpWeblab_.jpg",
+                "name": "FR",
+                "price": "804",
+                "stock": true
+              }
+            ]
+          }
+        },
+        "bamboo": {
+          "FCPS00003": {
+            "description": "This image of the 3 Layer Lucky Bamboo is for illustration purposes only. The actual plant may vary in appearance depending on its age, size, and environmental conditions.\n\nRequires Bright, Indirect Sunlight<br>\nChange Water Every 7–10 Days<br>\nVery Easy to Maintain<br>\nAir-Purifying Plant<br>\nNot Pet-Friendly<br>\nFertilizer Optional – Once a Month<br>\nIdeal for Home, Office, and Gifts<br>\nSymbol of Luck, Wealth & Prosperity<br>\n\n",
+            "id": "FCPS00003",
+            "name": "Michelia Champa, Son Champa",
+            "parentCategory": "plant",
+            "subCategory": "bamboo",
+            "tags": [
+              "bamboo",
+              "pots-and-vase",
+              "liquid",
+              "flowering"
+            ],
+            "variations": [
+              {
+                "id": "PLT-SML-GRN",
+                "image": "https://cdn.shopify.com/s/files/1/0047/9730/0847/products/nurserylive-plants-3-layer-lucky-bamboo-plant-in-a-bowl-with-pebbles-5-265294_300x@2x.jpg?v=1679748420",
+                "name": "S",
+                "stock": true,
+                "price": "513"
+              }
+            ]
+          }
+        },
+        "bonsai": {
+          "FCPS00004": {
+            "description": "This image of the Ficus Bonsai is for illustration purposes only. The actual plant may differ in size, shape, and leaf density based on age and growing conditions.\n\nRequires Bright, Filtered Light<br>\nWater When Topsoil Feels Dry<br>\nModerate Care Level<br>\nAir-Purifying Plant<br>\nNot Pet-Friendly<br>\nFertilize Every 2–4 Weeks in Growing Season<br>\nIdeal for Indoor Décor, Gifting, and Meditation Spaces<br>\nCan Be Shaped Through Regular Pruning<br>\n\n",
+            "id": "FCPS00004",
+            "name": "Ficus Bonsai ",
+            "parentCategory": "plant",
+            "subCategory": "bonsai",
+            "tags": [
+              "bonsai",
+              "flowering"
+            ],
+            "variations": [
+              {
+                "id": "PLT-SML-GRN",
+                "image": "XFCGHVJBN",
+                "name": "S",
+                "price": "678",
+                "stock": true
+              }
+            ]
+          }
+        },
+        "cactus": {
+          "FCPS00005": {
+            "description": "This image of the Dragon Fruit plant is for illustration purposes only. The actual plant may vary in size and appearance depending on growth stage, seasonal conditions, and care provided.\nRequires Full Sunlight (6–8 hours daily)<br>\nWater Moderately; Allow Soil to Dry Between Watering<br>\nEasy to Moderate Maintenance<br>\nAir-Purifying and Pet-Friendly<br>\nFertilize Monthly During Active Growth<br>\nIdeal for Large Pots, Raised Beds, or Trellises<br>\nProduces Edible, Nutritious Fruit<br>\nRequires Vertical Support for Climbing<br>\n\n\n",
+            "id": "FCPS00005",
+            "name": "Dragon Fruit",
+            "parentCategory": "plant",
+            "subCategory": "cactus",
+            "tags": [
+              "fruits",
+              "cactus",
+              "flowering",
+              "plastics"
+            ],
+            "variations": [
+              {
+                "id": "PLT-SML-GRN",
+                "image": "HTFGJH,GFHJ",
+                "name": "S",
+                "stock": true,
+                "price": "657"
+              }
+            ]
+          }
+        },
+        "carnivorus": {
+          "FCPS00006": {
+            "description": "This image of the Venus Flytrap is for illustration purposes only. The actual plant may vary depending on size, age, and growth conditions.\nNeeds Bright Light (4–6 hours daily)<br>\nUse Distilled or Rainwater Only<br>\nKeep Soil Moist – Never Let Dry Out<br>\nNo Fertilizer Needed – Eats Insects<br>\nModerate Care Level<br>\nPet-Safe and Non-Toxic<br>\nThrives in Humid Environments or Terrariums<br>\nIdeal for Indoor Curiosity Displays or Insect Control<br>\n\n\n",
+            "id": "FCPS00006",
+            "name": "Venus Flytrap, Dionaea muscipula ",
+            "parentCategory": "plant",
+            "subCategory": "carnivorus",
+            "tags": [
+              "carnivorous",
+              "pots",
+              "flowering",
+              "air"
+            ],
+            "variations": [
+              {
+                "id": "PLT-MDM-GRN",
+                "image": "DFGHNJKHJHGGGFHDXG",
+                "name": "M",
+                "stock": true,
+                "price": "279"
+              }
+            ]
+          }
+        },
+        "climber": {
+          "FCPS00007": {
+            "description": "This image of Krishna Kamal (Passion Flower) is for illustration purposes only. Actual plant appearance may vary with age, size, climate, and growth conditions.\nNeeds Full to Partial Sunlight<br>\nWater Regularly – Keep Soil Moist<br>\nModerate Care Level<br>\nAir-Purifying Plant<br>\nNot Pet-Friendly (Caution on Ingestion)<br>\nFertilize Every 3–4 Weeks During Growth<br>\nIdeal for Trellises, Fences, and Balcony Grills<br>\nSymbol of Faith and Devotion in Indian Culture<br>\n\n\n",
+            "id": "FCPS00007",
+            "name": "Krishna Kamal, Passion flower, Passiflora incarnata ",
+            "parentCategory": "plant",
+            "subCategory": "climber",
+            "tags": [
+              "climber",
+              "air",
+              "aquatic"
+            ],
+            "variations": [
+              {
+                "id": "PLT-MDM-GRN",
+                "image": "ASDFGYJHYTTWERYU",
+                "name": "M",
+                "stock": true,
+                "price": "675"
+              }
+            ]
+          },
+          "FCPS00009": {
+            "description": "This image of Madhumalti Dwarf (Rangoon Creeper) is for illustration purposes only. Actual plant appearance may vary with age, size, and growing conditions.\nNeeds Full Sun to Partial Shade<br>\nWater Moderately When Soil Dries<br>\nEasy to Moderate Care Level<br>\nAir-Purifying Vine<br>\nNot Pet-Friendly<br>\nFertilize Monthly During Growth<br>\nIdeal for Trellises, Balconies, and Gardens<br>\nFlower Colors Change Over Time<br>\n",
+            "id": "FCPS00009",
+            "name": "Madhumalti Dwarf, Rangoon Creeper ",
+            "parentCategory": "plant",
+            "subCategory": "climber",
+            "tags": [
+              "creepers",
+              "climbers"
+            ],
+            "variations": [
+              {
+                "id": "PLT-MDM-GRN",
+                "image": "RGFCHGFY7UBGJYHGHG",
+                "name": "M",
+                "stock": true,
+                "price": "567"
+              }
+            ]
+          }
+        },
+        "conifer": {
+          "FCPS00008": {
+            "description": "This image of the Pine Tree is for illustration purposes only. Actual size and shape may vary based on species, age, and growing conditions.\n\nRequires Full Sunlight<br>\nWater Deeply but Infrequently<br>\nModerate Care Level<br>\nAir-Purifying Tree<br>\nPet-Friendly<br>\nFertilize in Early Spring<br>\nThrives in Well-Draining Soil<br>\nIdeal for Large Gardens and Landscaping<br>\n\n",
+            "id": "FCPS00008",
+            "name": "Pine ",
+            "parentCategory": "plant",
+            "subCategory": "conifer",
+            "tags": [
+              "conifer",
+              "climber",
+              "flowering"
+            ],
+            "variations": [
+              {
+                "id": "PLT-MDM-PRL",
+                "image": "ESGFJGHYTUGJH",
+                "name": "M",
+                "stock": true,
+                "price": "567"
+              }
+            ]
+          }
+        },
+        "cycad": {
+          "FCPS00010": {
+            "description": "This image of Cycas Plant (Sago Palm) is for illustration purposes only. Actual plant size and shape may vary depending on age and growing conditions.\n\nRequires Bright Indirect to Partial Sunlight<br>\nWater Moderately When Top 2 Inches of Soil Are Dry<br>\nEasy to Moderate Care Level<br>\nAir-Purifying Plant<br>\nNot Pet-Friendly (Toxic If Ingested)<br>\nFertilize in Spring and Summer<br>\nPrefers Well-Draining Soil<br>\nAdds Tropical Elegance to Indoors and Outdoors<br>\n\n",
+            "id": "FCPS00010",
+            "name": "Cycas Plant, Sago Palm, Cycas revoluta - Plant",
+            "parentCategory": "plant",
+            "subCategory": "cycad",
+            "tags": [
+              "cycad",
+              "flowering",
+              "air"
+            ],
+            "variations": [
+              {
+                "id": "PLT-MDM-GRN",
+                "image": "ESRFEFGFVYTBBHNBNMVHJGF",
+                "name": "M",
+                "stock": true,
+                "price": "567"
+              }
+            ]
+          }
+        },
+        "ferns": {
+          "FCPS00012": {
+            "description": "This image of Boston Fern is for illustration purposes only. Actual plant appearance may vary depending on age, size, and environmental conditions.\n\n",
+            "id": "FCPS00012",
+            "name": "Nephrolepis exaltata bosteniensis, Boston Fern ",
+            "parentCategory": "plant",
+            "subCategory": "ferns",
+            "tags": [
+              "ferns",
+              "flowering",
+              "air"
+            ],
+            "variations": [
+              {
+                "id": "PLT-MDM-GRN",
+                "image": "tyyuhgfcvghjgvhjk",
+                "name": "S",
+                "stock": true,
+                "price": "675"
+              },
+              {
+                "id": "PLT-FR-PNK",
+                "image": "etrytfyuiigfvgh",
+                "name": "M",
+                "stock": true,
+                "price": "789"
+              }
+            ]
+          }
+        },
+        "ficus": {
+          "FCPS00013": {
+            "description": "wsdfgbbjbjbgvbn",
+            "id": "FCPS00013",
+            "name": "Ficus Lyrata Bambino, Dwarf Fiddle Leaf Fig ",
+            "parentCategory": "plant",
+            "subCategory": "ficus",
+            "tags": [
+              "air"
+            ],
+            "variations": [
+              {
+                "id": "PLT-MDM-GRN",
+                "image": "tyuyfgygfghhghvhgvgu",
+                "name": "M",
+                "stock": true,
+                "price": "687"
+              }
+            ]
+          }
+        },
+        "fig": {
+          "FCPS00014": {
+            "description": "gvhjh hbbjbn jhbjhb ",
+            "id": "FCPS00014",
+            "name": "Ficus Lyrata Bambino, Dwarf Fiddle Leaf Fig ",
+            "parentCategory": "plant",
+            "subCategory": "fig",
+            "tags": [
+              "air",
+              "aquatic"
+            ],
+            "variations": [
+              {
+                "id": "PLT-MDM-GRN",
+                "image": "ertyuiokhcffghj",
+                "name": "M",
+                "stock": true,
+                "price": "566"
+              }
+            ]
+          }
+        },
+        "flowering": {
+          "FCPS00011": {
+            "description": "This image of Jasmine is for illustration purposes only. Actual plant size and shape may vary depending on age and growing conditions.",
+            "id": "FCPS00011",
+            "name": "Jasmine",
+            "parentCategory": "plant",
+            "subCategory": "flowering",
+            "tags": [
+              "flowering",
+              "fruits",
+              "air"
+            ],
+            "variations": [
+              {
+                "id": "PLT-MDM-WHT",
+                "image": "ERTGYHJKHGCFGHJH",
+                "name": "M",
+                "stock": true,
+                "price": "677"
+              }
+            ]
+          }
+        },
+        "fruit": {
+          "FCPS00015": {
+            "description": "bhbkjm bjmhbhjn ",
+            "id": "FCPS00015",
+            "name": "Kagzi Nimboo, Lemon ",
+            "parentCategory": "plant",
+            "subCategory": "fruit",
+            "tags": [
+              "fruits",
+              "air",
+              "flowering"
+            ],
+            "variations": [
+              {
+                "id": "PLT-SML-GRN",
+                "image": "DFGHJHXGHMCVBN,",
+                "name": "S",
+                "stock": true,
+                "price": "567"
+              }
+            ]
+          }
+        },
+        "grafted-fruit": {
+          "FCPS00016": {
+            "description": "FHGBNMNB MBJMBMNBW FDEBFVMN",
+            "id": "FCPS00016",
+            "name": "Pomegranate, Annar, Anar ",
+            "parentCategory": "plant",
+            "subCategory": "grafted-fruit",
+            "tags": [
+              "fruits",
+              "air"
+            ],
+            "variations": [
+              {
+                "id": "PLT-MDM-GRN",
+                "image": "seedfghjhf",
+                "name": "M",
+                "stock": true,
+                "price": "565"
+              }
+            ]
+          }
+        },
+        "ground-cover": {
+          "FCPS00017": {
+            "description": "rfghhgvvv ghhvghj ijhvghjn",
+            "id": "FCPS00017",
+            "name": "Rhoeo Plant, Rhoeo discolor (Tricolor, Variegated) ",
+            "parentCategory": "plant",
+            "stockStatus": true,
+            "subCategory": "ground-cover",
+            "tags": [
+              "air",
+              "fruits"
+            ],
+            "variations": [
+              {
+                "id": "PLT-FR-PNK",
+                "image": "RGHJKGHHJKHG",
+                "name": "FR",
+                "price": "565"
+              }
+            ]
+          }
+        },
+        "herb": {
+          "FCPS00018": {
+            "description": "RDFG FTGYHJ FGHJ",
+            "id": "FCPS00018",
+            "name": "Krishna Tulsi Plant, Holy Basil, Ocimum tenuiflorum  ",
+            "parentCategory": "plant",
+            "stockStatus": true,
+            "subCategory": "herb",
+            "tags": [
+              "air",
+              "vhgvb"
+            ],
+            "variations": [
+              {
+                "id": "PLT-SML-BLK",
+                "image": "SDFGHB YUIHGGCVBN ",
+                "name": "S",
+                "price": "456"
+              }
+            ]
+          }
+        }
+      }
+    },
+    "id": 19
+  }
+}
