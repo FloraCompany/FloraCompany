@@ -36,8 +36,8 @@ exports.verifyPayment = functions.https.onCall( (data, context) => {
 });
 
 function createOrder(options) {
-  return new Promise(async (resolve, reject) => {
-     await instance.orders.create(options, (err, order) => {
+  return new Promise((resolve, reject) => {
+     instance.orders.create(options, (err, order) => {
       if (err !== null) {
         console.log("Failed to create order", err);
         return reject(err);
