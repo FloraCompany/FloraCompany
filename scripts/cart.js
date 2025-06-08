@@ -247,7 +247,7 @@ async function initiatePayment(orderAmount, userData) {
 
 	let functions = getFunctions(app);
 
-	const createOrder = httpsCallable(functions, 'createOrder');
+	const createOrder = httpsCallable(functions, 'generateOrder');
 	const orderData = await createOrder({amount: orderAmount});
 
   const options = {
