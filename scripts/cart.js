@@ -257,9 +257,9 @@ async function initiatePayment(orderAmount, userData) {
     name: "FloraCo",
     description: "Test Payment",
     order_id: orderData.data.id,
-    handler: async function (response) {
+    handler: function (response) {
       const verify = httpsCallable(functions, 'verifyPayment');
-      const result = await verify({
+      const result = verify({
         order_id: response.razorpay_order_id,
         payment_id: response.razorpay_payment_id,
         signature: response.razorpay_signature
