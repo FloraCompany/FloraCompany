@@ -25,6 +25,7 @@ exports.verifyPayment = functions.https.onCall( (data, context) => {
 
   const { order_id, payment_id, signature } = data;
 
+  console.log("Generated Signature :", generatedSignature, "\nSignature", signature);
   console.log("Order ID:", order_id);
   console.log("Payment ID:", payment_id);
   console.log("Signature (from Razorpay):", signature);
@@ -32,6 +33,7 @@ exports.verifyPayment = functions.https.onCall( (data, context) => {
   const hmac = crypto.createHmac("sha256", "pPqWmH7slMHAkgeU40CfL0Gw");
   hmac.update(order_id+"|"+payment_id);
   const generatedSignature = hmac.digest("hex");
+  console.log("Generated Signature :", generatedSignature, "\nSignature", signature);
 
   if (generatedSignature === signature) {
     return { success: true};
