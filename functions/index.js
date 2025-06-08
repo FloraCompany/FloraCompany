@@ -1,54 +1,47 @@
-const functions = require("firebase-functions");
-const Razorpay = require("razorpay");
-const crypto = require("crypto");
+const functions = require('firebase-functions');
+const Razorpay = require('razorpay');
+const crypto = require('crypto');
 
-// Initialize Razorpay instance
-const instance = new Razorpay({
-  key_id: "rzp_test_ODWUFUWozm48C8",
-  key_secret: "pPqWmH7slMHAkgeU40CfL0Gw"
+// Initialize Razorpay instance with your keys (use environment variables)
+const razorpay = new Razorpay({
+      key_id: "rzp_test_ODWUFUWozm48C8",
+      key_secret: "pPqWmH7slMHAkgeU40CfL0Gw"
 });
 
-// Create Razorpay order
 exports.createOrder = functions.https.onCall(async (data, context) => {
-  const options = {
-    amount: data.amount * 100, // Convert to paise
-    currency: "INR",
-    receipt: "FloraCoReceipt_" + Date.now()
-  };
+  const { amount, currency = 'INR', receipt } = data;
+
+  if (!amount) {
+    throw new functions.https.HttpsError('invalid-argument', 'Amount is required');
+  }
 
   try {
-    const order = await instance.orders.create(options);
-    console.log("✅ Order created:", order);
-    return {
-      id: order.id,
-      amount: order.amount,
-      currency: order.currency
+    const options = {
+      amount: amount * 100, // amount in smallest currency unit (paise)
+      currency,
+      receipt: receipt || `receipt_order_${Date.now()}`,
     };
+
+    const order = await razorpay.orders.create(options);
+    return { orderId: order.id, amount: order.amount, currency: order.currency };
   } catch (error) {
-    console.error("❌ Failed to create order:", error);
-    throw new functions.https.HttpsError("internal", "Order creation failed");
+    console.error('Order creation failed:', error);
+    throw new functions.https.HttpsError('internal', 'Order creation failed');
   }
 });
 
-// Verify payment signature
+// Optional: Function to verify payment signature
+
 exports.verifyPayment = functions.https.onCall((data, context) => {
-  const { order_id, payment_id, signature } = data;
+  const { razorpay_order_id, razorpay_payment_id, razorpay_signature } = data;
 
-  if (!order_id || !payment_id || !signature) {
-    console.error("❌ Missing parameters for verification");
-    throw new functions.https.HttpsError("invalid-argument", "Missing payment data");
-  }
+  const hmac = crypto.createHmac('sha256', "pPqWmH7slMHAkgeU40CfL0Gw");
+  hmac.update(razorpay_order_id + "|" + razorpay_payment_id);
+  const generated_signature = hmac.digest('hex');
 
-  const hmac = crypto.createHmac("sha256", "pPqWmH7slMHAkgeU40CfL0Gw");
-  hmac.update(order_id + "|" + payment_id);
-  const generatedSignature = hmac.digest("hex");
-
-  console.log("🔐 Generated:", generatedSignature);
-  console.log("📩 Provided:", signature);
-
-  if (generatedSignature === signature) {
-    return { success: true };
+  if (generated_signature === razorpay_signature) {
+    return { verified: true };
   } else {
-    throw new functions.https.HttpsError("permission-denied", "Invalid Signature");
+    return { verified: false };
   }
 });

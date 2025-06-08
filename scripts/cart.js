@@ -243,73 +243,44 @@ async function updateList(callBack){
 	window.localStorage.setItem('FloraCoCoupons', (JSON.stringify(offers)));
 }
 
-async function initiatePayment(orderAmount, userData) {
-try {
-    const functions = getFunctions(app);
-    const createOrder = httpsCallable(functions, 'createOrder');
+async function initiatePayment(amount, userData) {
 
-    // Step 1: Request order from backend
-    const orderData = await createOrder({ amount: orderAmount });
-    console.log("🧾 Order created: ", orderData.data, " \nPrice ", orderAmount);
+	let functions = getFunctions(app);
+
+	const createOrder = httpsCallable(functions, ' createOrder');
+	try {
+    const orderResult = await createOrder({ amount });
+    const { orderId, currency } = orderResult.data;
 
     const options = {
-      key: "rzp_test_ODWUFUWozm48C8",
-      amount: orderData.data.amount,
-      currency: orderData.data.currency,
-      name: "FloraCo",
-      description: "Test Payment",
-      order_id: orderData.data.id,
-
+      key: "rzp_test_ODWUFUWozm48C8", // razorpay key id (public)
+      amount: amount * 100,
+      currency,
+      order_id: orderId,
       handler: async function (response) {
-        console.log("✅ Payment Response:", response);
+        // response has razorpay_payment_id, razorpay_order_id, razorpay_signature
 
-        try {
-          const verify = httpsCallable(functions, 'verifyPayment');
-          const result = await verify({
-            order_id: response.razorpay_order_id,
-            payment_id: response.razorpay_payment_id,
-            signature: response.razorpay_signature
-          });
+        // Optionally verify payment on backend
+        const verifyPayment = firebase.functions().httpsCallable('verifyPayment');
+        const verification = await verifyPayment(response);
 
-          console.log("🔒 Verification result:", result.data);
-
-          if (result.data.success) {
-            uploadOrder(); // Your function to store order in Firestore
-            alert("✅ Payment successful!");
-          } else {
-            alert("❌ Payment verification failed");
-          }
-        } catch (verifyError) {
-          console.error("❌ Verification Error:", verifyError);
-          alert("Error verifying payment");
+        if (verification.data.verified) {
+          alert('Payment successful and verified!');
+          // proceed with order fulfillment
+        } else {
+          alert('Payment verification failed!');
         }
       },
-
-      prefill: {
-        name: String(userData.name),
-        email: "floracompanydot@gmail.com",
-        contact: String(userData.phone)
-      },
-
       theme: {
-        color: "#3399cc"
+        color: '#3399cc'
       }
     };
 
     const rzp = new Razorpay(options);
-
-    // Step 2: Handle payment failure
-    rzp.on('payment.failed', function (response) {
-      console.error("❌ Payment Failed:", response.error);
-      alert("Payment failed: " + response.error.description);
-    });
-
-    // Step 3: Open payment popup
     rzp.open();
 
-  } catch (err) {
-    console.error("🔥 Error initiating payment:", err);
-    alert("Something went wrong while creating the payment order.");
+  } catch (error) {
+    console.error('Error initiating payment:', error);
   }
 }
 
