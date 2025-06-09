@@ -106,7 +106,7 @@ function appendOrder(products, ordersDoc, order) {
               <button class="detailButton" onclick="displayDetails('${order.id}shipAddress');">Details</button>
             </div>
             <div class="orderHead">
-              <p class="shipping" id="${order.id}shipAddress">${getDateAndMonth(order.placed)}\n${getAddress(order.address)}</p>
+              <p class="shipping" id="${order.id}shipAddress">${getDateAndMonth(order.placed)}<br>${getAddress(order.address)}</p>
             </div>
           </div>
 	`;
