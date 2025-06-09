@@ -252,7 +252,7 @@ async function initiatePayment(orderAmount, userData) {
 
   const options = {
     key: "rzp_test_ODWUFUWozm48C8",
-    amount: orderDat['amount'],
+    amount: orderData['amount'],
     currency: "INR",
     name: "FloraCo",
     description: "Test Payment",
