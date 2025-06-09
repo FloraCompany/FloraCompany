@@ -248,8 +248,8 @@ async function initiatePayment(orderAmount, userData) {
 	let functions = getFunctions(app);
 
 	const createOrder = httpsCallable(functions, 'generateOrder');
-	const orderData = await createOrder({amount: (parseInt(orderAmount)*100)})
-	.then(() => {
+	const orderDaa = await createOrder({amount: (parseInt(orderAmount)*100)})
+	.then((orderData) => {
 
 		const options = {
 			key: "rzp_test_ODWUFUWozm48C8",
