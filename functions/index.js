@@ -7,11 +7,10 @@ const instance = new Razorpay({
       key_secret: "pPqWmH7slMHAkgeU40CfL0Gw"
 });
 
-exports.generateOrder = functions.https.onCall((amount) => {
+exports.generateOrder = functions.https.onCall((data, context) => {
   const options = {
-    amount: amount*100,
-    currency: "INR",
-    reciept: "FloraCoReceipt"+amount+'_'+Date.now()
+    amount: data.amount,
+    currency: "INR"
   };
 
   return createOrder(options).then((order) => {
@@ -49,9 +48,9 @@ function createOrder(options) {
       } else{
         console.log("OrderID: ", order);
         return resolve({
-         id: order.id,
-        amount: order.amount,
-        currency: order.currency
+          id: order.id,
+          amount: order.amount,
+          currency: order.currency
         });
       }
     });
