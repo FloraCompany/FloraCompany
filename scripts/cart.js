@@ -262,7 +262,7 @@ async function initiatePayment(orderAmount, userData) {
     order_id: orderData.id,
     handler: function (response) {
 
-		try {
+	try {
 
       const verify = httpsCallable(functions, 'verifyPayment');
       const result = verify({
@@ -270,6 +270,13 @@ async function initiatePayment(orderAmount, userData) {
         payment_id: response.razorpay_payment_id,
         signature: response.razorpay_signature
       });
+
+	  console.log("Sending to verifyPayment:");
+	  console.log({
+		order_id: response.razorpay_order_id,
+		payment_id: response.razorpay_payment_id,
+		signature: response.razorpay_signature
+	  });
 
 	  console.log(result);
 

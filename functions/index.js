@@ -8,6 +8,9 @@ const instance = new Razorpay({
 });
 
 exports.generateOrder = functions.https.onCall((data, context) => {
+
+  console.log(data);
+
   const options = {
     amount: 50000,
     currency: "INR"
@@ -20,7 +23,7 @@ exports.generateOrder = functions.https.onCall((data, context) => {
   });
 });
 
-exports.verifyPayment = functions.https.onCall( (data) => {
+exports.verifyPayment = functions.https.onCall( (data, context) => {
 
   const { order_id, payment_id, signature } = data;
 
@@ -40,8 +43,8 @@ exports.verifyPayment = functions.https.onCall( (data) => {
 });
 
 function createOrder(options) {
-  return new Promise((resolve, reject) => {
-     instance.orders.create(options, (err, order) => {
+  return new Promise( async (resolve, reject) => {
+     await instance.orders.create(options, (err, order) => {
       if (err !== null) {
         console.log("Failed to create order", err);
         return reject(err);
