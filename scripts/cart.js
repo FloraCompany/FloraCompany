@@ -55,6 +55,7 @@ function checkout(){
 		fullAdd: fullAdd,
 		country: country
 	};
+				initiatePayment(getFinalAmount(), address);
 
 	if (name && phone && street && locality && pincode && country) {
 
@@ -70,7 +71,6 @@ function checkout(){
 			if (modeOfPayment === "2") {
 				uploadOrder();
 			}else{
-				initiatePayment(getFinalAmount(), address);
 			}
 
 		}
@@ -258,6 +258,9 @@ async function initiatePayment(orderAmount, userData) {
     description: "Test Payment",
     order_id: orderData['id'],
     handler: function (response) {
+
+		console.log(typeof(orderData));
+		console.log(JSON.stringify(orderData)['id']);
 
 	console.log('Hello' + orderData.id);
 	console.log('Hello' + orderData['id']);
