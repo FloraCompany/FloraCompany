@@ -283,7 +283,7 @@ async function initiatePayment(orderAmount, userData) {
       contact: String(userData.phone)
     },
     theme: {
-      color: "#3399cc"
+      color: "#333333"
     }
   };
   const rzp = new Razorpay(options);
