@@ -270,7 +270,7 @@ async function initiatePayment(orderAmount, userData) {
 
 	  console.log(result);
 
-      if (result.data.success) {
+      if (result.success) {
         uploadOrder();
 		console.log('Payment Successful');
         alert("Payment successful!");

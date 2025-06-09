@@ -33,6 +33,8 @@ exports.verifyPayment = functions.https.onCall( (data, context) => {
   hmac.update(order_id+"|"+payment_id);
   const generatedSignature = hmac.digest("hex");
 
+  console.log('isSame '+(generatedSignature === signature));
+
   if (generatedSignature === signature) {
     return { success: true};
   }else {
