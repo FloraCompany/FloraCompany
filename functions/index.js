@@ -9,7 +9,7 @@ const instance = new Razorpay({
 
 exports.generateOrder = functions.https.onCall((data, context) => {
   const options = {
-    amount: data.amount,
+    amount: 50000,
     currency: "INR"
   };
 
