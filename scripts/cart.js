@@ -252,20 +252,17 @@ async function initiatePayment(orderAmount, userData) {
 
   const options = {
     key: "rzp_test_ODWUFUWozm48C8",
-    amount: orderData['amount'],
+    amount: orderData.data.amount,
     currency: "INR",
     name: "FloraCo",
     description: "Test Payment",
-    order_id: orderData['id'],
+    order_id: orderData.data.id,
     handler: function (response) {
 
-		console.log(typeof(orderData));
-		console.log(JSON.stringify(orderData));
-
-	console.log('Hello' + orderData.id);
-	console.log('Hello' + orderData['id']);
-	console.log('Hello' + orderData.amount);
-	console.log('Hello' + orderData['amount']);
+	console.log('Hello' + orderData.data.id);
+	console.log('Hello' + orderData['data']['id']);
+	console.log('Hello' + orderData.data.amount);
+	console.log('Hello' + orderData['data']['amount']);
 	try {
 
       const verify = httpsCallable(functions, 'verifyPayment');
@@ -277,7 +274,7 @@ async function initiatePayment(orderAmount, userData) {
 
 	  console.log("Sending to verifyPayment:");
 	  console.log({
-		order_id: `${response.razorpay_order_id} OID: ${orderData.id}`,
+		order_id: `${response.razorpay_order_id} OID: ${orderData.data.id}`,
 		payment_id: response.razorpay_payment_id,
 		signature: response.razorpay_signature
 	  });
