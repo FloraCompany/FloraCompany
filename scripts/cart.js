@@ -270,14 +270,14 @@ async function initiatePayment(orderAmount, userData) {
 
 	  console.log('Result' + result);
 
-      if (result.success) {
-        uploadOrder();
-		console.log('Payment Successful');
-        alert("Payment successful!");
-      } else {
-		console.log('Payment Failed');
-        alert("Payment verification failed");
-      }
+    //   if (result.success) {
+    //     uploadOrder();
+	// 	console.log('Payment Successful');
+    //     alert("Payment successful!");
+    //   } else {
+	// 	console.log('Payment Failed');
+    //     alert("Payment verification failed");
+    //   }
 	}catch (error) {
 		console.log(error);
 	}
