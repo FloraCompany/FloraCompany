@@ -250,7 +250,7 @@ async function initiatePayment(orderAmount, userData) {
 	const createOrder = httpsCallable(functions, 'generateOrder');
 	const orderData = await createOrder({amount: (pasreInt(orderAmount)*100)});
 
-	console.log({amount: (pasreInt(orderAmount)*100)});
+	console.log('Hello '+ {amount: (pasreInt(orderAmount)*100)});
 	console.log(orderData);
 
   const options = {
