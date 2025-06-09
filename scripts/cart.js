@@ -65,7 +65,7 @@ function checkout(){
 		if (modeOfPayment === undefined) {
 			showToast('Select Payment Method');
 		}else{
-
+			showButtonLoad();
 			if (modeOfPayment === "2") {
 				uploadOrder("");
 			}else{
@@ -197,6 +197,7 @@ function openLoad(){
 function closeLoad(){
 	document.getElementById('loader').style.display = "none";
 	document.getElementById('loader').classList.toggle('openLoader');
+	hideButtonLoad();
 }
 
 function getDateString(){
@@ -271,6 +272,7 @@ async function initiatePayment(orderAmount, userData) {
         uploadOrder(response.razorpay_payment_id);
 		console.log('Payment Successful');
       } else {
+		hideButtonLoad();
 		console.log('Payment Failed');
       }
 
@@ -278,23 +280,36 @@ async function initiatePayment(orderAmount, userData) {
 		console.log(error);
 	}
     },
+	modal: {
+		ondismiss: function () {
+			hideButtonLoad();
+		}
+	},
     prefill: {
       name: String(userData.name),
       contact: String(userData.phone)
     },
     theme: {
-      color: "#333333"
+      color: "#3399cc"
     }
   };
   const rzp = new Razorpay(options);
   rzp.open();
 }
 
-
-
 /*function getFinalAmount(){
 	return parseInt(document.getElementById('final-price').innerHTML);
 }*/
+
+function showButtonLoad(){
+	document.getElementById('checkout').style.display = 'none';
+	document.getElementById('addToCartLoader').style.display = 'flex';
+}
+
+function hideButtonLoad(){
+	document.getElementById('checkout').style.display = 'block';
+	document.getElementById('addToCartLoader').style.display = 'none';
+}
 
 window.addEventListener('storage', function(event) {
 	display();

@@ -171,27 +171,37 @@ function populateContent(products) {
 	let productsOffer = JSON.parse(window.localStorage.getItem('FloraCoOfferProducts'));
 	products.slice(0, displayAmount).forEach((obj, index) => {
 
-		let variant = obj.variations[0].id;
-		const li = document.createElement('li');
-		li.className = 'productCard';
-		li.innerHTML = `
-				<a href="product.html?category=${obj.parentCategory}&sub=${obj.subCategory}&id=${obj.id}" class="cardA">
-					<div class="card">
-						<div class="cardImg">
-							<img class="cardImageView" src="${obj.variations[0].image}" onerror="this.onerror=null;this.src='./media/fc.png';">
+		if (sortType == 2) {
+			obj.variations = obj.variations.sort((a,b) => { return parseInt(a.price) - parseInt(b.price);});
+		}else  if (sortType == 3) {
+			obj.variations = obj.variations.sort((a,b) => { return parseInt(b.price) - parseInt(a.price);});
+		}
+
+		obj.variations.forEach((varia, indexVar) => {
+
+			console.log(varia, indexVar);
+			
+			const li = document.createElement('li');
+			li.className = 'productCard';
+			li.innerHTML = `
+					<a href="product.html?category=${obj.parentCategory}&sub=${obj.subCategory}&id=${obj.id}&option=${varia.id}" class="cardA">
+						<div class="card">
+							<div class="cardImg">
+								<img class="cardImageView" src="${varia.image}" onerror="this.onerror=null;this.src='./media/fc.png';">
+							</div>
+							<div class="cardText">
+								<p class="category">${obj.parentCategory}</p>
+								${isNotOfferProduct(productsOffer, obj.id) ? '' : '<p class="productOffer">'+getDiscount(productsOffer, obj.id)+'% off</p>'}
+								<h3 class="title">${obj.name} (${obj.variations[indexVar].name})</h3>
+								<span class="priceSpan">${isNotOfferProduct(productsOffer, obj.id) ? getSpanOfferPrice(0.1, obj.variations[indexVar].price) : obj.variations[indexVar].price}</span>
+								<h3 class="price">${getPrice(isNotOfferProduct(productsOffer, obj.id), getDiscount(productsOffer, obj.id), obj.variations[indexVar].price)}</h3>
+							</div>
 						</div>
-						<div class="cardText">
-							<p class="category">${obj.parentCategory}</p>
-							${isNotOfferProduct(productsOffer, obj.id) ? '' : '<p class="productOffer">'+getDiscount(productsOffer, obj.id)+'% off</p>'}
-							<h3 class="title">${obj.name}</h3>
-							<span class="priceSpan">${isNotOfferProduct(productsOffer, obj.id) ? getSpanOfferPrice(0.1, obj.variations[0].price) : obj.variations[0].price}</span>
-							<h3 class="price">${getPrice(isNotOfferProduct(productsOffer, obj.id), getDiscount(productsOffer, obj.id), obj.variations[0].price)}</h3>
-						</div>
-					</div>
-					<button>Details</button>
-				</a>
-			`;
-		content.appendChild(li);
+						<button>Details</button>
+					</a>
+				`;
+			content.appendChild(li);
+		});
 	});
 }
 

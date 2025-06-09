@@ -106,7 +106,7 @@ function appendOrder(products, ordersDoc, order) {
               <button class="detailButton" onclick="displayDetails('${order.id}shipAddress');">Details</button>
             </div>
             <div class="orderHead">
-              <p class="shipping" id="${order.id}shipAddress">${getAddress(order.address)}</p>
+              <p class="shipping" id="${order.id}shipAddress">${getDateAndMonth(order.placed)}/n${getAddress(order.address)}</p>
             </div>
           </div>
 	`;
@@ -122,6 +122,20 @@ function getAddress(address) {
 		${address.pincode}<br>
 		${address.country}
 	`;
+}
+
+function getDateAndMonth(timeee){
+	var months = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'];
+
+	const d = new Date();
+	d.setTime(parseInt(timeee));
+
+	var date = d.getDate();
+	var mon = months[d.getMonth()];
+	var year = d.getFullYear();
+
+	return `${date}-${mon.toUpperCase()}-${year}`;
+
 }
 
 function getIndex(arr, value){
