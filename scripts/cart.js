@@ -252,14 +252,17 @@ async function initiatePayment(orderAmount, userData) {
 
   const options = {
     key: "rzp_test_ODWUFUWozm48C8",
-    amount: orderData.amount,
+    amount: orderDat['amount'],
     currency: "INR",
     name: "FloraCo",
     description: "Test Payment",
-    order_id: orderData.id,
+    order_id: orderData['id'],
     handler: function (response) {
 
-	console.log(orderData);
+	console.log(orderData.id);
+	console.log(orderData['id']);
+	console.log(orderData.amount);
+	console.log(orderData['amount']);
 	try {
 
       const verify = httpsCallable(functions, 'verifyPayment');
