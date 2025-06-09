@@ -56,26 +56,31 @@ function checkout(){
 		country: country
 	};
 
-	if (name && phone && street && locality && pincode && country) {
+	if (window.localStorage.getItem('FloraCoUserLogIn') === "true"){
 
-		let userId = window.localStorage.getItem('UserID');
+		if (name && phone && street && locality && pincode && country) {
 
-		window.localStorage.setItem(userId+'address', JSON.stringify(address));
+			let userId = window.localStorage.getItem('UserID');
 
-		if (modeOfPayment === undefined) {
-			showToast('Select Payment Method');
-		}else{
-			showButtonLoad();
-			if (modeOfPayment === "2") {
-				uploadOrder("");
+			window.localStorage.setItem(userId+'address', JSON.stringify(address));
+
+			if (modeOfPayment === undefined) {
+				showToast('Select Payment Method');
 			}else{
-				initiatePayment(getFinalAmount(), address);
+				showButtonLoad();
+				if (modeOfPayment === "2") {
+					uploadOrder("");
+				}else{
+					initiatePayment(getFinalAmount(), address);
+				}
+
 			}
 
+		}else{
+			showToast('Fill the (*) fields and cross check');
 		}
-
-	}else{
-		showToast('Fill the (*) fields and cross check');
+	} else {
+		window.location.href = "login.html";
 	}
 }
 
