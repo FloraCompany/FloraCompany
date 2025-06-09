@@ -250,9 +250,6 @@ async function initiatePayment(orderAmount, userData) {
 	const createOrder = httpsCallable(functions, 'generateOrder');
 	const orderData = await createOrder({amount: (parseInt(orderAmount)*100)});
 
-	console.log({amount: (parseInt(orderAmount)*100)});
-	console.log(orderData);
-
   const options = {
     key: "rzp_test_ODWUFUWozm48C8",
     amount: orderData.amount,
@@ -262,6 +259,7 @@ async function initiatePayment(orderAmount, userData) {
     order_id: orderData.id,
     handler: function (response) {
 
+	console.log(orderData);
 	try {
 
       const verify = httpsCallable(functions, 'verifyPayment');
