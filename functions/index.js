@@ -9,10 +9,8 @@ const instance = new Razorpay({
 
 exports.generateOrder = functions.https.onCall((data, context) => {
 
-  console.log(data);
-
   const options = {
-    amount: 50000,
+    amount: data.data.amount,
     currency: "INR"
   };
 
@@ -25,7 +23,7 @@ exports.generateOrder = functions.https.onCall((data, context) => {
 
 exports.verifyPayment = functions.https.onCall( (data, context) => {
 
-  const { order_id, payment_id, signature } = data;
+  const { order_id, payment_id, signature } = data.data;
 
   console.log("Order ID:", order_id);
   console.log("Payment ID:", payment_id);
