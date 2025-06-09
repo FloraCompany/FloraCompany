@@ -273,11 +273,12 @@ async function initiatePayment(orderAmount, userData) {
 
 	  console.log("Sending to verifyPayment:");
 	  console.log({
-		order_id: response.razorpay_order_id,
+		order_id: `${response.razorpay_order_id} OID: ${orderData.id}`,
 		payment_id: response.razorpay_payment_id,
 		signature: response.razorpay_signature
 	  });
 
+	  console.log(response);
 	  console.log(result);
 
       if (result.success) {
