@@ -255,11 +255,11 @@ async function initiatePayment(orderAmount, userData) {
 
   const options = {
     key: "rzp_test_ODWUFUWozm48C8",
-    amount: orderData.amount,
+    amount: 50000,
     currency: "INR",
     name: "FloraCo",
     description: "Test Payment",
-    order_id: orderData.id,
+    order_id: "orderData.id",
     handler: function (response) {
 
 	try {
