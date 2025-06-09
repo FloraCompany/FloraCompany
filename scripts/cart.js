@@ -268,6 +268,8 @@ async function initiatePayment(orderAmount, userData) {
         signature: response.razorpay_signature
       });
 
+	  console.log(result);
+
       if (result.data.success) {
         uploadOrder();
 		console.log('Payment Successful');
