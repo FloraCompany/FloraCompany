@@ -259,10 +259,10 @@ async function initiatePayment(orderAmount, userData) {
     order_id: orderData['id'],
     handler: function (response) {
 
-	console.log(orderData.id);
-	console.log(orderData['id']);
-	console.log(orderData.amount);
-	console.log(orderData['amount']);
+	console.log('Hello' + orderData.id);
+	console.log('Hello' + orderData['id']);
+	console.log('Hello' + orderData.amount);
+	console.log('Hello' + orderData['amount']);
 	try {
 
       const verify = httpsCallable(functions, 'verifyPayment');
