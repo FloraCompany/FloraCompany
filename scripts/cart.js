@@ -260,7 +260,7 @@ async function initiatePayment(orderAmount, userData) {
     handler: function (response) {
 
 		console.log(typeof(orderData));
-		console.log(orderData);
+		console.log(JSON.stringify(orderData));
 
 	console.log('Hello' + orderData.id);
 	console.log('Hello' + orderData['id']);
