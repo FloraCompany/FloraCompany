@@ -248,66 +248,71 @@ async function initiatePayment(orderAmount, userData) {
 	let functions = getFunctions(app);
 
 	const createOrder = httpsCallable(functions, 'generateOrder');
-	const orderData = await createOrder({amount: (parseInt(orderAmount)*100)});
+	const orderData = await createOrder({amount: (parseInt(orderAmount)*100)})
+	.then(() => {
 
-  const options = {
-    key: "rzp_test_ODWUFUWozm48C8",
-    amount: orderData['amount'],
-    currency: "INR",
-    name: "FloraCo",
-    description: "Test Payment",
-    order_id: orderData['id'],
-    handler: function (response) {
+		const options = {
+			key: "rzp_test_ODWUFUWozm48C8",
+			amount: orderData['amount'],
+			currency: "INR",
+			name: "FloraCo",
+			description: "Test Payment",
+			order_id: orderData['id'],
+			handler: function (response) {
 
-		console.log(typeof(orderData));
-		console.log(JSON.stringify(orderData)['id']);
+			console.log(typeof(orderData));
+			console.log(JSON.stringify(orderData));
 
-	console.log('Hello' + orderData.id);
-	console.log('Hello' + orderData['id']);
-	console.log('Hello' + orderData.amount);
-	console.log('Hello' + orderData['amount']);
-	try {
+			console.log('Hello' + orderData.id);
+			console.log('Hello' + orderData['id']);
+			console.log('Hello' + orderData.amount);
+			console.log('Hello' + orderData['amount']);
+			try {
 
-      const verify = httpsCallable(functions, 'verifyPayment');
-      const result = verify({
-        order_id: response.razorpay_order_id,
-        payment_id: response.razorpay_payment_id,
-        signature: response.razorpay_signature
-      });
+			const verify = httpsCallable(functions, 'verifyPayment');
+			const result = verify({
+				order_id: response.razorpay_order_id,
+				payment_id: response.razorpay_payment_id,
+				signature: response.razorpay_signature
+			});
 
-	  console.log("Sending to verifyPayment:");
-	  console.log({
-		order_id: `${response.razorpay_order_id} OID: ${orderData.id}`,
-		payment_id: response.razorpay_payment_id,
-		signature: response.razorpay_signature
-	  });
+			console.log("Sending to verifyPayment:");
+			console.log({
+				order_id: `${response.razorpay_order_id} OID: ${orderData.id}`,
+				payment_id: response.razorpay_payment_id,
+				signature: response.razorpay_signature
+			});
 
-	  console.log(response);
-	  console.log(result);
+			console.log(response);
+			console.log(result);
 
-      if (result.success) {
-        uploadOrder();
-		console.log('Payment Successful');
-        alert("Payment successful!");
-      } else {
-		console.log('Payment Failed');
-        alert("Payment verification failed");
-      }
-	}catch (error) {
-		console.log(error);
-	}
-    },
-    prefill: {
-      name: String(userData.name),
-      email: "floracompanydot@gmail.com",
-      contact: String(userData.phone)
-    },
-    theme: {
-      color: "#3399cc"
-    }
-  };
-  const rzp = new Razorpay(options);
-  rzp.open();
+			if (result.success) {
+				uploadOrder();
+				console.log('Payment Successful');
+				alert("Payment successful!");
+			} else {
+				console.log('Payment Failed');
+				alert("Payment verification failed");
+			}
+			}catch (error) {
+				console.log(error);
+			}
+			},
+			prefill: {
+			name: String(userData.name),
+			email: "floracompanydot@gmail.com",
+			contact: String(userData.phone)
+			},
+			theme: {
+			color: "#3399cc"
+			}
+		};
+		const rzp = new Razorpay(options);
+		rzp.open();
+
+
+	});
+
 }
 
 
