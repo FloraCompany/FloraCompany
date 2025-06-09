@@ -55,7 +55,6 @@ function checkout(){
 		fullAdd: fullAdd,
 		country: country
 	};
-				initiatePayment(getFinalAmount(), address);
 
 	if (name && phone && street && locality && pincode && country) {
 
@@ -67,10 +66,10 @@ function checkout(){
 			showToast('Select Payment Method');
 		}else{
 
-
 			if (modeOfPayment === "2") {
-				uploadOrder();
+				uploadOrder("");
 			}else{
+				initiatePayment(getFinalAmount(), address);
 			}
 
 		}
@@ -80,7 +79,7 @@ function checkout(){
 	}
 }
 
-function uploadOrder(){
+function uploadOrder(paymentID){
 
 	const rdb = getDatabase(app);
 	const db = getFirestore(app);
@@ -89,12 +88,12 @@ function uploadOrder(){
 		window.location.href = 'login.html';
 	}else{
 		let date = getDateString();
-		updateOrderNo(date, rdb, db);
+		updateOrderNo(date, rdb, db, paymentID);
 	}
 
 }
 
-async function updateOrderNo(date, rdb, db){
+async function updateOrderNo(date, rdb, db, paymentID){
 
 	openLoad();
 
@@ -110,7 +109,7 @@ async function updateOrderNo(date, rdb, db){
 			runTransaction(child(ref(rdb), 'numericals/sales/'+date), (currentValue) => {
 					return currentValue+getFinalAmount();
 			}).then((result) => {
-				updateProduct(rdb, db, orderID);
+				updateProduct(rdb, db, orderID, paymentID);
 				off(child(ref(rdb), 'numericals/sales/'+date));
 				off(child(ref(rdb), 'numericals/orders/'+date));
 				off(child(ref(rdb), 'numericals/orderNo'));		
@@ -130,7 +129,7 @@ async function updateOrderNo(date, rdb, db){
 	});
 }
 
-async function updateProduct(rdb, db, orderID){
+async function updateProduct(rdb, db, orderID, paymentID){
 
 	let cart = JSON.parse(window.localStorage.getItem('FloraCoCart'));
 
@@ -145,7 +144,7 @@ async function updateProduct(rdb, db, orderID){
 			placed: String(new Date().getTime()),
 			address: address,
 			cost: getFinalAmount(),
-			paymentRef: '',
+			paymentRef: paymentID,
 			mode: modeOfPayment,
 			status: 0
 		};
@@ -268,23 +267,19 @@ async function initiatePayment(orderAmount, userData) {
         signature: response.razorpay_signature
       });
 
-	  console.log(result);
+      if (result.data.success) {
+        uploadOrder(response.razorpay_payment_id);
+		console.log('Payment Successful');
+      } else {
+		console.log('Payment Failed');
+      }
 
-    //   if (result.success) {
-    //     uploadOrder();
-	// 	console.log('Payment Successful');
-    //     alert("Payment successful!");
-    //   } else {
-	// 	console.log('Payment Failed');
-    //     alert("Payment verification failed");
-    //   }
 	}catch (error) {
 		console.log(error);
 	}
     },
     prefill: {
       name: String(userData.name),
-      email: "floracompanydot@gmail.com",
       contact: String(userData.phone)
     },
     theme: {
