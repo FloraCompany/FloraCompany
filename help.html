@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>FloraCo • Help</title>
+  <link rel="icon" type="image/x-icon" href="./media/fc.png">
+  <link rel="stylesheet" href="./styles/help.css">
+  <link rel='stylesheet' href='https://cdn-uicons.flaticon.com/2.6.0/uicons-solid-chubby/css/uicons-solid-chubby.css'>  
+  <link rel='stylesheet' href='https://cdn-uicons.flaticon.com/2.6.0/uicons-bold-rounded/css/uicons-bold-rounded.css'>
+  <link rel='stylesheet' href='https://cdn-uicons.flaticon.com/2.6.0/uicons-brands/css/uicons-brands.css'>
+  <link rel='stylesheet' href='https://cdn-uicons.flaticon.com/2.6.0/uicons-solid-straight/css/uicons-solid-straight.css'>
+  <link href="https://fonts.googleapis.com/css2?family=Bowlby+One&display=swap" rel="stylesheet">
+  <link rel='stylesheet' href='https://cdn-uicons.flaticon.com/2.6.0/uicons-solid-chubby/css/uicons-solid-chubby.css'>
+
+</head>
+<body>
+
+  <div class="container">
+    <div class="left">
+      <div class="list">
+        <ul>
+          <li class="profile-list">
+            <a href="index.html" title="" class="profile-a">
+              <i class="fi fi-ss-house-chimney"></i>
+              <p class="profile-p">Home</p>
+            </a>
+          </li>
+          <li class="profile-list">
+            <a href="account.html" title="" class="profile-a">
+            <i class="fi fi-ss-user"></i>
+            <p class="profile-p">Account</p>
+            </a>
+          </li>
+          <li class="profile-list">
+            <a href="orders.html" title="" class="profile-a">
+            <i class="fi fi-ss-box-open-full"></i>
+            <p class="profile-p">Orders</p>
+            </a>
+          </li>
+          <li class="profile-list">
+            <a href="help.html" title="" class="profile-a selected">
+            <i class="fi fi-ss-chatbot-speech-bubble"></i>
+            <p class="profile-p">Help</p>
+            </a>
+          </li>
+          <li class="profile-list">
+            <a href="privacy.html" title="" class="profile-a">
+            <i class="fi fi-ss-document"></i>
+            <p class="profile-p">Privacy</p>
+            </a>
+          </li>
+          <li class="profile-list">
+            <a href="faq.html" title="" class="profile-a">
+            <i class="fi fi-ss-interrogation"></i>
+            <p class="profile-p">FAQs</p>
+            </a>
+          </li>
+          <li class="profile-a" id="logout">
+            <i class="fi fi-ss-exit"></i>
+            <p class="profile-p">Logout</p>
+          </li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="right">
+      <div class="rightContent">
+        <h1>Help Center</h1>
+        <p class="description">Tell us your issues, problems, experience anything. We appreciate your patience and solve your issues. We'll get back to you via email</p>
+        <form id="contactForm">
+
+          <div class="form-group">
+            <label for="name">Your Name:</label><br>
+            <input type="text" id="name" required><br><br>
+          </div>
+
+          <div class="form-group">
+            <label for="email">Your Email:</label><br>
+            <input type="email" id="email" required><br><br>     
+          </div>
+
+          <div class="form-group">
+            <label for="subject">Issue:</label><br>
+            <select id="mode">
+              <option value="Issue">Issue</option>
+              <option value="Report">Report</option>
+              <option value="Review">Review</option>
+              <option value="Complaint">Complaint</option>
+              <option value="Other">Other</option>
+            </select><br><br>
+          </div>
+
+          <div class="form-group">
+            <label for="subject">Subject:</label><br>
+            <input type="text" id="subject" required><br><br>
+          </div>
+
+
+          <div class="form-group">
+            <label for="message">Message:</label><br>
+            <textarea id="message" rows="6" required></textarea><br><br>
+          </div>
+
+          <button type="submit" class="send-button" id="send">
+            <span class="gmail-icon">
+              <img src="media/fc.png" alt="Floraco Icon">
+            </span>
+            Send To FloraCo
+          </button>
+
+        </form>
+      </div>
+
+      <div id="toast"></div>
+  </div>
+  <script src="scripts/help.js" type="module" charset="utf-8" async defer></script>
+</body>
+</html>

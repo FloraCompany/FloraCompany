@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>FloraCo • Profile</title>
+  <link rel="icon" type="image/x-icon" href="./media/fc.png">
+  <link rel="stylesheet" href="./styles/account.css">
+  <link rel='stylesheet' href='https://cdn-uicons.flaticon.com/2.6.0/uicons-solid-chubby/css/uicons-solid-chubby.css'>  
+  <link rel='stylesheet' href='https://cdn-uicons.flaticon.com/2.6.0/uicons-bold-rounded/css/uicons-bold-rounded.css'>
+  <link rel='stylesheet' href='https://cdn-uicons.flaticon.com/2.6.0/uicons-brands/css/uicons-brands.css'>
+  <link rel='stylesheet' href='https://cdn-uicons.flaticon.com/2.6.0/uicons-solid-straight/css/uicons-solid-straight.css'>
+  <link href="https://fonts.googleapis.com/css2?family=Bowlby+One&display=swap" rel="stylesheet">
+  <link rel='stylesheet' href='https://cdn-uicons.flaticon.com/2.6.0/uicons-solid-chubby/css/uicons-solid-chubby.css'>
+
+</head>
+<body>
+
+  <div class="container">
+    <div class="left">
+      <div class="list">
+        <ul>
+          <li class="profile-list">
+            <a href="index.html" title="" class="profile-a">
+              <i class="fi fi-ss-house-chimney"></i>
+              <p class="profile-p">Home</p>
+            </a>
+          </li>
+          <li class="profile-list">
+            <a href="account.html" title="" class="profile-a selected">
+            <i class="fi fi-ss-user"></i>
+            <p class="profile-p">Account</p>
+            </a>
+          </li>
+          <li class="profile-list">
+            <a href="orders.html" title="" class="profile-a">
+            <i class="fi fi-ss-box-open-full"></i>
+            <p class="profile-p">Orders</p>
+            </a>
+          </li>
+          <li class="profile-list">
+            <a href="help.html" title="" class="profile-a">
+            <i class="fi fi-ss-chatbot-speech-bubble"></i>
+            <p class="profile-p">Help</p>
+            </a>
+          </li>
+          <li class="profile-list">
+            <a href="privacy.html" title="" class="profile-a">
+            <i class="fi fi-ss-document"></i>
+            <p class="profile-p">Privacy</p>
+            </a>
+          </li>
+          <li class="profile-list">
+            <a href="faq.html" title="" class="profile-a">
+            <i class="fi fi-ss-interrogation"></i>
+            <p class="profile-p">FAQs</p>
+            </a>
+          </li>
+          <li class="profile-a" id="logout">
+            <i class="fi fi-ss-exit"></i>
+            <p class="profile-p">Logout</p>
+          </li>
+        </ul>
+      </div>
+    </div>
+    <div class="right">
+      <div class="rightContent">
+        <h1>Account Settings</h1>
+        <p class="description">This information is used to contact you and (only username) is visible on the shipment</p>
+        <div class="form-group">
+          <label for="name">Username</label>
+          <input type="name" id="name" placeholder="e.g. Dave Jones" disabled="true">
+        </div>
+        <div class="form-group">
+          <label for="email">Email ID</label>
+          <input type="email" id="email" placeholder="example@gmail.com" disabled="true">
+        </div>
+
+        <div class="commit">
+          <button class="button edit" id="aedit">Edit</button>
+          <button class="button save" id="asave">Save</button>
+          <button class="button cancel" id="acancel">Cancel</button>
+        </div>
+        <br>
+        <br>
+        <h1>Personal Information</h1>
+        <p class="description">This information is stored within your device and not stored by us. This is what we use to deliver the shipment</p>
+        <div class="form-group">
+          <label for="phone">Phone No</label>
+          <input type="number" id="phone" maxlength="10" placeholder="e.g. 9876543210" disabled="true">
+        </div>
+        <div class="form-group">
+          <label for="street">Street, D.No</label>
+          <input type="text" id="street" maxlength="60" placeholder="e.g. St. John Street, D.No 65-1-2" disabled="true">
+        </div>
+        <div class="form-group">
+          <label for="locality">Locality, P.O</label>
+          <input type="text" id="locality" maxlength="60" placeholder="e.g. Kakinada" disabled="true">
+        </div>
+        <div class="form-group">
+          <label for="pin">Pincode</label>
+            <input type="number" id="pin" placeholder="e.g. 555555" disabled="true"/>
+        </div>
+        <div class="form-group">
+          <label for="country">Country</label>
+          <input type="text" id="country" value="India" disabled="true" />
+        </div>
+
+        <div class="commit">
+          <button class="button edit" id="iedit">Edit</button>
+          <button class="button save" id="isave">Save</button>
+          <button class="button cancel" id="icancel">Cancel</button>
+        </div>
+        <br>
+        <br>
+        <h1>Account Deletion</h1>
+        <p class="description">Once deleted the account cannot be recovered by any means or form.<br>Note: Any pending orders from this account will be delivered without fail. Kindly receive the order on time.</p>
+        <p class="description">You'll be redirected to google signin to confirm account deletion</p>
+        <p>Google Sign-in to delete account</p>
+        <div class="commit">
+          <button class="button delete" id="deleteAccount">Sign-in To Delete Account</button>
+        </div>
+      </div>
+  </div>
+
+  <div id="toast"></div>
+
+  <script src="scripts/account.js" type="module" charset="utf-8" async defer></script>
+</body>
+</html>
