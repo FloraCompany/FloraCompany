@@ -267,7 +267,7 @@ async function initiatePayment(orderAmount, userData) {
       amount: orderData.amount,
       currency: orderData.currency,
       name: "FloraCo",
-      description: "Test Payment",
+      description: "Product Purchase",
       order_id: orderData.id,
       handler: async function (response) {
         const verify = await fetch(

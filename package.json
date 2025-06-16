@@ -1,6 +1,9 @@
 {
   "dependencies": {
+<<<<<<< HEAD
     "firebase-tools": "^14.7.0",
+=======
+>>>>>>> fd0613cd535ff91c95e8870df54f142baf51897b
     "git": "^0.1.5",
     "razorpay": "^2.9.6"
   }

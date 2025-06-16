@@ -1,20 +1,13 @@
-<<<<<<< HEAD
 const functions = require('firebase-functions');
 const Razorpay = require('razorpay');
 const crypto = require('crypto');
 const cors = require('cors')({ origin: true }); 
-=======
-const functions = require("firebase-functions");
-const Razorpay = require("razorpay");
-const crypto = require("crypto");
->>>>>>> fd0613cd535ff91c95e8870df54f142baf51897b
 
 const instance = new Razorpay({
       key_id: "rzp_test_ODWUFUWozm48C8",
       key_secret: "pPqWmH7slMHAkgeU40CfL0Gw"
 });
 
-<<<<<<< HEAD
 exports.generateOrder = functions.https.onRequest((req, res) => {
   cors(req, res, () => {
     if (req.method !== "POST") {
@@ -112,52 +105,3 @@ exports.verifyPayment = functions.https.onRequest((req, res) => {
 //     });
 //   });
 // }
-=======
-exports.generateOrder = functions.https.onCall((data, context) => {
-
-  const options = {
-    amount: data.data.amount,
-    currency: "INR"
-  };
-
-  return createOrder(options).then((order) => {
-    return order;
-  }).catch((e) => {
-    return { error: e };
-  });
-});
-
-exports.verifyPayment = functions.https.onCall( (data, context) => {
-
-  const { order_id, payment_id, signature } = data.data;
-
-  const hmac = crypto.createHmac("sha256", "pPqWmH7slMHAkgeU40CfL0Gw");
-  hmac.update(order_id+"|"+payment_id);
-  const generatedSignature = hmac.digest("hex");
-
-  if (generatedSignature === signature) {
-    return { success: true};
-  }else {
-    throw new functions.https.HttpsError("permission-denied", "Invalid Signature");
-  }
-});
-
-function createOrder(options) {
-  return new Promise( async (resolve, reject) => {
-     await instance.orders.create(options, (err, order) => {
-      if (err !== null) {
-        console.log("Failed to create order", err);
-        return reject(err);
-      } else{
-        console.log("OrderID: ", order);
-        return resolve({
-          id: order.id,
-          amount: order.amount,
-          currency: order.currency
-        });
-      }
-    });
-  });
-}
->>>>>>> fd0613cd535ff91c95e8870df54f142baf51897b
-
